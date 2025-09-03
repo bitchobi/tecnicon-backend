@@ -1,13 +1,13 @@
 // routes/gastos.js
 import express from 'express';
 import { getGastos, addGasto, getGastosAll } from '../controllers/gastosController.js';
-import { authMiddleware } from '../middleware/authMiddleware.js';
+import { verificarToken } from '../middleware/authMiddleware.js';
 import { uploadMiddleware } from '../middleware/uploadMiddleware.js';
 
 const router = express.Router();
 
 // Middleware de autenticación para todas las rutas
-router.use(authMiddleware);
+router.use(verificarToken);
 
 // GET /gastos - Todos los gastos (usado por Gastos.vue)
 router.get('/', getGastosAll);
